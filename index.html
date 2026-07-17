@@ -126,6 +126,17 @@ footer .socials a:hover{background:rgba(255,255,255,.15)}
 .reveal{opacity:0;transform:translateY(50px);transition:.8s}
 .reveal.show{opacity:1;transform:translateY(0)}
 
+/* جدول قیمت */
+.price-wrapper{overflow-x:auto;margin:40px 0;border-radius:24px;box-shadow:0 15px 50px var(--shadow);border:1px solid rgba(106,0,255,.1)}
+.price-table{width:100%;border-collapse:collapse;background:white;text-align:center;font-size:15px}
+.price-table thead{background:var(--purple);color:white}
+.price-table th{padding:18px 12px;font-weight:700;font-size:16px}
+.price-table td{padding:16px 12px;border-bottom:1px solid #f0e6ff;color:#444}
+.price-table tbody tr{transition:.3s}
+.price-table tbody tr:hover{background:#f8f5ff;transform:scale(1.01)}
+.price-table .service-name{text-align:right;font-weight:700;color:var(--purple);padding-right:20px}
+.price-table .price-high{color:var(--purple);font-weight:700}
+
 /* ریسپانسیو */
 @media(max-width:768px){
 .nav-links{display:none;position:fixed;top:60px;left:0;right:0;background:var(--glass);backdrop-filter:blur(20px);flex-direction:column;align-items:center;padding:30px 0;gap:20px;box-shadow:0 10px 30px var(--shadow)}
@@ -140,6 +151,8 @@ footer .socials a:hover{background:rgba(255,255,255,.15)}
 .stat h2{font-size:36px}
 .section-title{font-size:28px}
 .phone{font-size:26px!important}
+.price-table{font-size:13px}
+.price-table th,.price-table td{padding:12px 8px}
 }
 </style>
 </head>
@@ -153,6 +166,7 @@ footer .socials a:hover{background:rgba(255,255,255,.15)}
 <li><a href="#home">خانه</a></li>
 <li><a href="#works">نمونه کارها</a></li>
 <li><a href="#services">خدمات</a></li>
+<li><a href="#pricing">تعرفه‌ها</a></li>
 <li><a href="#advantages">مزیت‌ها</a></li>
 <li><a href="#discount">تخفیف ویژه</a></li>
 <li><a href="#order">ثبت سفارش</a></li>
@@ -173,7 +187,7 @@ footer .socials a:hover{background:rgba(255,255,255,.15)}
 <a class="btn btn-outline" href="#works" style="margin-right:10px">نمونه کارها</a>
 </div>
 <div class="hero-img">
-<img src="zinat.jpg" alt="آرا گرافیک">
+&lt;img src="zinat.jpg" alt="آرا گرافیک"&gt;
 </div>
 </div>
 </section>
@@ -206,20 +220,20 @@ footer .socials a:hover{background:rgba(255,255,255,.15)}
 </div>
 
 <div class="gallery" id="gallery">
-<div class="work" data-cat="card"><img src="images/card/1.jpg" alt="کارت ویزیت" onclick="openLB(this)"><h3>کارت ویزیت</h3></div>
-<div class="work" data-cat="card"><img src="images/card/2.jpg" alt="کارت ویزیت" onclick="openLB(this)"><h3>کارت ویزیت</h3></div>
-<div class="work" data-cat="card"><img src="images/card/3.jpg" alt="کارت ویزیت" onclick="openLB(this)"><h3>کارت ویزیت</h3></div>
-<div class="work" data-cat="card"><img src="images/card/4.jpg" alt="کارت ویزیت" onclick="openLB(this)"><h3>کارت ویزیت</h3></div>
-<div class="work" data-cat="flyer"><img src="images/flyer/1.jpg" alt="تراکت" onclick="openLB(this)"><h3>تراکت</h3></div>
-<div class="work" data-cat="flyer"><img src="images/flyer/2.jpg" alt="تراکت" onclick="openLB(this)"><h3>تراکت</h3></div>
-<div class="work" data-cat="flyer"><img src="images/flyer/3.jpg" alt="تراکت" onclick="openLB(this)"><h3>تراکت</h3></div>
-<div class="work" data-cat="flyer"><img src="images/flyer/4.jpg" alt="تراکت" onclick="openLB(this)"><h3>تراکت</h3></div>
-<div class="work" data-cat="banner"><img src="images/banner/1.jpg" alt="بنر" onclick="openLB(this)"><h3>بنر</h3></div>
-<div class="work" data-cat="banner"><img src="images/banner/2.jpg" alt="بنر" onclick="openLB(this)"><h3>بنر</h3></div>
-<div class="work" data-cat="banner"><img src="images/banner/3.jpg" alt="بنر" onclick="openLB(this)"><h3>بنر</h3></div>
-<div class="work" data-cat="label"><img src="images/label/1.jpg" alt="لیبل" onclick="openLB(this)"><h3>لیبل</h3></div>
-<div class="work" data-cat="label"><img src="images/label/2.jpg" alt="لیبل" onclick="openLB(this)"><h3>لیبل</h3></div>
-<div class="work" data-cat="label"><img src="images/label/3.jpg" alt="لیبل" onclick="openLB(this)"><h3>لیبل</h3></div>
+<div class="work" data-cat="card">&lt;img src="images/card/1.jpg" alt="کارت ویزیت" onclick="openLB(this)"&gt;<h3>کارت ویزیت</h3></div>
+<div class="work" data-cat="card">&lt;img src="images/card/2.jpg" alt="کارت ویزیت" onclick="openLB(this)"&gt;<h3>کارت ویزیت</h3></div>
+<div class="work" data-cat="card">&lt;img src="images/card/3.jpg" alt="کارت ویزیت" onclick="openLB(this)"&gt;<h3>کارت ویزیت</h3></div>
+<div class="work" data-cat="card">&lt;img src="images/card/4.jpg" alt="کارت ویزیت" onclick="openLB(this)"&gt;<h3>کارت ویزیت</h3></div>
+<div class="work" data-cat="flyer">&lt;img src="images/flyer/1.jpg" alt="تراکت" onclick="openLB(this)"&gt;<h3>تراکت</h3></div>
+<div class="work" data-cat="flyer">&lt;img src="images/flyer/2.jpg" alt="تراکت" onclick="openLB(this)"&gt;<h3>تراکت</h3></div>
+<div class="work" data-cat="flyer">&lt;img src="images/flyer/3.jpg" alt="تراکت" onclick="openLB(this)"&gt;<h3>تراکت</h3></div>
+<div class="work" data-cat="flyer">&lt;img src="images/flyer/4.jpg" alt="تراکت" onclick="openLB(this)"&gt;<h3>تراکت</h3></div>
+<div class="work" data-cat="banner">&lt;img src="images/banner/1.jpg" alt="بنر" onclick="openLB(this)"&gt;<h3>بنر</h3></div>
+<div class="work" data-cat="banner">&lt;img src="images/banner/2.jpg" alt="بنر" onclick="openLB(this)"&gt;<h3>بنر</h3></div>
+<div class="work" data-cat="banner">&lt;img src="images/banner/3.jpg" alt="بنر" onclick="openLB(this)"&gt;<h3>بنر</h3></div>
+<div class="work" data-cat="label">&lt;img src="images/label/1.jpg" alt="لیبل" onclick="openLB(this)"&gt;<h3>لیبل</h3></div>
+<div class="work" data-cat="label">&lt;img src="images/label/2.jpg" alt="لیبل" onclick="openLB(this)"&gt;<h3>لیبل</h3></div>
+<div class="work" data-cat="label">&lt;img src="images/label/3.jpg" alt="لیبل" onclick="openLB(this)"&gt;<h3>لیبل</h3></div>
 </div>
 </div>
 </section>
@@ -227,7 +241,7 @@ footer .socials a:hover{background:rgba(255,255,255,.15)}
 <!-- لایت باکس -->
 <div class="lightbox" id="lightbox" onclick="closeLB(event)">
 <span class="close">&times;</span>
-<img id="lbImg" src="" alt="">
+&lt;img id="lbImg" src="" alt=""&gt;
 </div>
 
 <!-- خدمات -->
@@ -242,6 +256,40 @@ footer .socials a:hover{background:rgba(255,255,255,.15)}
 <div class="card"><div class="icon">📁</div><h3>ست اداری</h3><p>سربرگ، پاکت نامه، فولدر و مهر با طراحی یکپارچه</p></div>
 <div class="card"><div class="icon">🏷️</div><h3>لیبل</h3><p>طراحی لیبل و برچسب محصولات با کیفیت بالا</p></div>
 <div class="card"><div class="icon">📐</div><h3>طراحی اختصاصی</h3><p>هر نوع طراحی گرافیکی متناسب با نیاز شما</p></div>
+</div>
+</div>
+</section>
+
+<!-- جدول قیمت‌ها (اضافه شده) -->
+<section id="pricing" style="background:white">
+<div class="container">
+<h2 class="section-title reveal">تعرفه خدمات آرا گرافیک ۱۴۰۵</h2>
+<p class="section-sub reveal">قیمت‌ها به تومان بوده و با توجه به جزئیات سفارش تغییر می‌کند</p>
+
+<div class="price-wrapper reveal">
+<table class="price-table">
+<thead>
+<tr>
+<th>خدمات</th>
+<th>ساده</th>
+<th>معمولی</th>
+<th>سطح بالا</th>
+<th>حرفه‌ای</th>
+</tr>
+</thead>
+<tbody>
+<tr><td class="service-name">لوگو / آیکن / پروفایل</td><td>۱,۵۰۰,۰۰۰</td><td>۲,۵۰۰,۰۰۰</td><td>۴,۹۰۰,۰۰۰</td><td class="price-high">۷,۰۰۰,۰۰۰+</td></tr>
+<tr><td class="service-name">ست اداری</td><td>۳,۰۰۰,۰۰۰</td><td>۴,۵۰۰,۰۰۰</td><td>۷,۹۰۰,۰۰۰</td><td class="price-high">۹,۰۰۰,۰۰۰+</td></tr>
+<tr><td class="service-name">بنر وبسایت</td><td>۶۰۰,۰۰۰</td><td>۸۰۰,۰۰۰</td><td>۱,۳۰۰,۰۰۰</td><td class="price-high">۱,۸۰۰,۰۰۰+</td></tr>
+<tr><td class="service-name">پست / استوری / کاور</td><td>۴۰۰,۰۰۰</td><td>۵۵۰,۰۰۰</td><td>۸۰۰,۰۰۰</td><td class="price-high">۱,۲۰۰,۰۰۰+</td></tr>
+<tr><td class="service-name">بنر / پوستر تبلیغاتی</td><td>۵۵۰,۰۰۰</td><td>۷۰۰,۰۰۰</td><td>۱,۲۰۰,۰۰۰</td><td class="price-high">۱,۷۰۰,۰۰۰+</td></tr>
+<tr><td class="service-name">بیزینس کارت / کارت ویزیت</td><td>۵۰۰,۰۰۰</td><td>۵۰۰,۰۰۰</td><td>۵۰۰,۰۰۰</td><td class="price-high">۵۰۰,۰۰۰</td></tr>
+<tr><td class="service-name">بروشور / کاتالوگ (هر صفحه)</td><td>۱۹۰,۰۰۰</td><td>۲۳۰,۰۰۰</td><td>۲۹۰,۰۰۰</td><td class="price-high">۴۰۰,۰۰۰+</td></tr>
+<tr><td class="service-name">اینفوگرافیک</td><td>۹۰۰,۰۰۰</td><td>۱,۳۰۰,۰۰۰</td><td>۱,۹۰۰,۰۰۰</td><td class="price-high">۲,۵۰۰,۰۰۰+</td></tr>
+<tr><td class="service-name">کارت ویزیت</td><td>۳۰۰,۰۰۰</td><td>۵۰۰,۰۰۰</td><td>۷۰۰,۰۰۰</td><td class="price-high">۹۰۰,۰۰۰</td></tr>
+<tr><td class="service-name">تراکت</td><td>۳۰۰,۰۰۰</td><td>۵۰۰,۰۰۰</td><td>۷۰۰,۰۰۰</td><td class="price-high">۹۰۰,۰۰۰</td></tr>
+</tbody>
+</table>
 </div>
 </div>
 </section>
@@ -293,7 +341,7 @@ footer .socials a:hover{background:rgba(255,255,255,.15)}
 <div class="phone">09927131621</div>
 <a class="btn" href="tel:09927131621" style="margin-top:10px">📞 تماس مستقیم</a>
 <div class="channels">
-<a class="ch" href="https://t.me/" target="_blank">✈️ تلگرام</a>
+<a class="ch" href="https://t.me/ara_graphic1" target="_blank">✈️ تلگرام</a>
 <a class="ch" href="#">💬 بله</a>
 <a class="ch" href="#">📱 ایتا</a>
 <a class="ch" href="https://instagram.com/ara_graphic1" target="_blank">📷 اینستاگرام</a>
@@ -308,8 +356,8 @@ footer .socials a:hover{background:rgba(255,255,255,.15)}
 <p style="opacity:.8;margin-bottom:20px">طراحی گرافیک حرفه‌ای و خلاقانه</p>
 <div class="socials">
 <a href="https://instagram.com/ara_graphic1" target="_blank">📷 اینستاگرام</a>
-<a href="https://t.me/" target="_blank">✈️ تلگرام کانال</a>
-<a href="https://t.me/" target="_blank">✈️ تلگرام پیج</a>
+<a href="https://t.me/ara_graphic1" target="_blank">✈️ تلگرام کانال</a>
+<a href="https://t.me/ara_graphic1" target="_blank">✈️ تلگرام پیج</a>
 <a href="#">💬 بله</a>
 <a href="#">📱 ایتا</a>
 </div>
@@ -319,7 +367,7 @@ footer .socials a:hover{background:rgba(255,255,255,.15)}
 <!-- دکمه‌های شناور -->
 <div class="float-btns">
 <a href="tel:09927131621" title="تماس">📞</a>
-<a href="https://t.me/" target="_blank" title="تلگرام">✈️</a>
+<a href="https://t.me/ara_graphic1" target="_blank" title="تلگرام">✈️</a>
 <a href="https://instagram.com/ara_graphic1" target="_blank" title="اینستاگرام">📷</a>
 </div>
 

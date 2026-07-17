@@ -1,653 +1,230 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>آرا گرافیک | طراحی حرفه‌ای</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>آرا گرافیک</title>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;500;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Vazirmatn,sans-serif;scroll-behavior:smooth}
+body{background:#ffffff;color:#6a00ff;overflow-x:hidden}
 
-  <!-- Font -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;600;800&display=swap" rel="stylesheet">
+/* منو */
+.nav{position:sticky;top:0;z-index:100;display:flex;justify-content:space-between;align-items:center;
+padding:15px 40px;background:rgba(255,255,255,.7);backdrop-filter:blur(15px);
+box-shadow:0 5px 25px rgba(106,0,255,.12)}
+.nav h1{font-size:26px;font-weight:800}
+.nav a{margin:0 10px;color:#6a00ff;text-decoration:none;font-weight:500;transition:.3s}
+.nav a:hover{color:#a64dff}
+.menu{display:flex;flex-wrap:wrap}
 
-  <style>
-    :root{
-      --bg1:#14001f;
-      --bg2:#2b0052;
-      --purple:#8b5cf6;
-      --purple2:#a78bfa;
-      --white:#ffffff;
-      --glass: rgba(255,255,255,.10);
-      --glass2: rgba(255,255,255,.16);
-      --stroke: rgba(255,255,255,.20);
-      --shadow: 0 18px 60px rgba(0,0,0,.45);
-    }
+.container{width:90%;max-width:1200px;margin:auto;padding:30px 0}
 
-    *{ box-sizing:border-box; }
-    html{ scroll-behavior:smooth; }
-    body{
-      margin:0;
-      font-family:"Vazirmatn", system-ui, -apple-system, Segoe UI, Arial;
-      color:var(--white);
-      background:
-        radial-gradient(1200px 600px at 80% 10%, rgba(139,92,246,.35), transparent 60%),
-        radial-gradient(900px 500px at 10% 30%, rgba(167,139,250,.25), transparent 60%),
-        linear-gradient(140deg, var(--bg1), var(--bg2));
-      overflow-x:hidden;
-    }
+.glass{background:rgba(255,255,255,.85);backdrop-filter:blur(20px);
+border:1px solid rgba(106,0,255,.15);border-radius:25px;padding:40px;margin:30px 0;
+box-shadow:0 15px 40px rgba(106,0,255,.15);animation:fadeUp 1s}
 
-    /* subtle animated blobs */
-    .blob{
-      position:fixed;
-      inset:auto;
-      width:520px; height:520px;
-      border-radius:50%;
-      filter: blur(40px);
-      opacity:.28;
-      z-index:-1;
-      animation: floaty 10s ease-in-out infinite;
-      background: radial-gradient(circle at 30% 30%, rgba(167,139,250,.9), rgba(139,92,246,.15), transparent 70%);
-    }
-    .blob.b1{ right:-220px; top:-180px; animation-duration: 12s; }
-    .blob.b2{ left:-260px; bottom:-220px; animation-duration: 14s; opacity:.22; }
+@keyframes fadeUp{from{opacity:0;transform:translateY(50px)}to{opacity:1;transform:translateY(0)}}
 
-    @keyframes floaty{
-      0%,100%{ transform: translate(0,0) scale(1); }
-      50%{ transform: translate(20px, -18px) scale(1.05); }
-    }
+/* هدر */
+.hero{display:flex;align-items:center;justify-content:space-between;gap:40px;flex-wrap:wrap}
+.hero img{width:280px;border-radius:25px;box-shadow:0 0 35px rgba(106,0,255,.35);
+animation:float 4s infinite ease-in-out}
+@keyframes float{50%{transform:translateY(-15px)}}
+.hero h1{font-size:46px;margin-bottom:15px}
+.hero p{line-height:2;font-size:18px}
 
-    header{
-      position:sticky;
-      top:0;
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      background: rgba(20,0,31,.35);
-      border-bottom:1px solid rgba(255,255,255,.10);
-      z-index:50;
-    }
-    .nav{
-      max-width:1100px;
-      margin:0 auto;
-      padding:14px 18px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:14px;
-    }
-    .brand{
-      display:flex;
-      align-items:center;
-      gap:10px;
-      font-weight:800;
-      letter-spacing:.2px;
-    }
-    .logo{
-      width:38px; height:38px;
-      border-radius:12px;
-      background: linear-gradient(135deg, rgba(139,92,246,.95), rgba(167,139,250,.65));
-      box-shadow: 0 10px 30px rgba(139,92,246,.25);
-      border:1px solid rgba(255,255,255,.18);
-      position:relative;
-      overflow:hidden;
-    }
-    .logo::after{
-      content:"";
-      position:absolute;
-      inset:-40%;
-      background: linear-gradient(120deg, transparent 40%, rgba(255,255,255,.28), transparent 60%);
-      transform: rotate(12deg);
-      animation: shine 2.8s linear infinite;
-    }
-    @keyframes shine{
-      0%{ transform:translateX(-30%) rotate(12deg); }
-      100%{ transform:translateX(30%) rotate(12deg); }
-    }
+.btn{display:inline-block;margin-top:20px;padding:15px 40px;background:#6a00ff;color:#fff;
+font-weight:bold;text-decoration:none;border-radius:50px;transition:.3s;
+box-shadow:0 8px 25px rgba(106,0,255,.35)}
+.btn:hover{background:#a64dff;transform:translateY(-4px)}
 
-    .nav a{
-      color:rgba(255,255,255,.9);
-      text-decoration:none;
-      font-weight:600;
-      font-size:14px;
-      padding:10px 10px;
-      border-radius:12px;
-      transition:.2s ease;
-    }
-    .nav a:hover{
-      background: rgba(255,255,255,.08);
-    }
-    .nav .cta{
-      background: linear-gradient(135deg, rgba(139,92,246,.95), rgba(167,139,250,.8));
-      border:1px solid rgba(255,255,255,.22);
-      box-shadow: 0 12px 35px rgba(139,92,246,.25);
-    }
+h2{font-size:32px;text-align:center;margin-bottom:30px}
 
-    .wrap{
-      max-width:1100px;
-      margin:0 auto;
-      padding: 34px 18px 70px;
-    }
+/* فیلتر گالری */
+.filters{text-align:center;margin-bottom:25px}
+.filters button{margin:6px;padding:10px 22px;border:2px solid #6a00ff;background:#fff;
+color:#6a00ff;border-radius:50px;cursor:pointer;font-weight:600;transition:.3s}
+.filters button:hover,.filters button.active{background:#6a00ff;color:#fff}
 
-    .hero{
-      display:grid;
-      grid-template-columns: 1.2fr .8fr;
-      gap:22px;
-      align-items:center;
-      margin-top:10px;
-    }
-    @media (max-width: 900px){
-      .hero{ grid-template-columns: 1fr; }
-    }
+.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:25px}
+.work{background:#fff;border-radius:20px;overflow:hidden;cursor:pointer;
+box-shadow:0 10px 30px rgba(106,0,255,.15);transition:.5s;animation:show .8s ease}
+.work:hover{transform:translateY(-12px) scale(1.04);box-shadow:0 20px 45px rgba(106,0,255,.35)}
+.work img{width:100%;height:220px;object-fit:cover;transition:.6s}
+.work:hover img{transform:scale(1.12)}
+.work h3{padding:18px;text-align:center;font-size:18px}
+@keyframes show{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:translateY(0)}}
 
-    .glass{
-      background: linear-gradient(180deg, var(--glass), rgba(255,255,255,.06));
-      border:1px solid rgba(255,255,255,.16);
-      border-radius:22px;
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-    }
+/* کارت خدمات */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px}
+.card{background:rgba(106,0,255,.06);padding:25px;border-radius:18px;text-align:center;transition:.4s}
+.card:hover{transform:translateY(-10px);background:rgba(106,0,255,.12)}
 
-    .hero-card{
-      padding:26px 22px;
-      position:relative;
-      overflow:hidden;
-    }
-    .hero-card::before{
-      content:"";
-      position:absolute;
-      inset:-1px;
-      background:
-        radial-gradient(500px 240px at 70% 0%, rgba(167,139,250,.22), transparent 60%),
-        radial-gradient(600px 260px at 10% 60%, rgba(139,92,246,.20), transparent 60%);
-      pointer-events:none;
-    }
+ul{line-height:2.4;padding-right:20px;font-size:18px}
 
-    h1{
-      margin:0 0 12px;
-      font-size:42px;
-      line-height:1.2;
-    }
-    @media (max-width: 520px){
-      h1{ font-size:34px; }
-    }
-    .sub{
-      margin:0 0 18px;
-      color:rgba(255,255,255,.82);
-      font-size:16px;
-      line-height:1.9;
-      max-width:52ch;
-    }
-    .badges{
-      display:flex;
-      flex-wrap:wrap;
-      gap:10px;
-      margin: 12px 0 18px;
-    }
-    .badge{
-      padding:8px 12px;
-      border-radius:999px;
-      border:1px solid rgba(255,255,255,.18);
-      background: rgba(255,255,255,.06);
-      color:rgba(255,255,255,.92);
-      font-weight:600;
-      font-size:13px;
-    }
+/* لایت باکس */
+.lightbox{position:fixed;inset:0;background:rgba(60,0,120,.85);display:none;
+align-items:center;justify-content:center;z-index:1000}
+.lightbox img{max-width:90%;max-height:85%;border-radius:15px;box-shadow:0 0 40px #fff}
+.lightbox span{position:absolute;top:25px;left:40px;color:#fff;font-size:45px;cursor:pointer}
 
-    .hero-actions{
-      display:flex;
-      flex-wrap:wrap;
-      gap:12px;
-      margin-top:14px;
-    }
-    .btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      gap:10px;
-      padding:12px 14px;
-      border-radius:14px;
-      text-decoration:none;
-      color:var(--white);
-      border:1px solid rgba(255,255,255,.20);
-      background: rgba(255,255,255,.06);
-      font-weight:700;
-      transition: .2s ease;
-      cursor:pointer;
-    }
-    .btn:hover{ transform: translateY(-2px); background: rgba(255,255,255,.09); }
-    .btn.primary{
-      background: linear-gradient(135deg, rgba(139,92,246,.95), rgba(167,139,250,.78));
-      border:1px solid rgba(255,255,255,.24);
-      box-shadow: 0 14px 40px rgba(139,92,246,.28);
-    }
-    .btn.ghost{
-      background: rgba(255,255,255,.05);
-    }
+/* دکمه های شناور */
+.float-btns{position:fixed;bottom:25px;left:25px;display:flex;flex-direction:column;gap:12px;z-index:200}
+.float-btns a{width:55px;height:55px;border-radius:50%;background:#6a00ff;color:#fff;
+display:flex;align-items:center;justify-content:center;font-size:22px;text-decoration:none;
+box-shadow:0 6px 20px rgba(106,0,255,.4);transition:.3s}
+.float-btns a:hover{transform:scale(1.15);background:#a64dff}
 
-    .profile{
-      padding:18px;
-      display:grid;
-      gap:12px;
-      align-content:start;
-    }
-    .profile .pic{
-      width:100%;
-      aspect-ratio: 4/5;
-      border-radius:20px;
-      overflow:hidden;
-      border:1px solid rgba(255,255,255,.18);
-      box-shadow: 0 18px 55px rgba(0,0,0,.35);
-      position:relative;
-      background: rgba(255,255,255,.05);
-    }
-    .profile .pic img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      display:block;
-      transform: scale(1.02);
-      filter: contrast(1.02) saturate(1.02);
-    }
-    .profile .meta{
-      display:grid;
-      gap:6px;
-      color:rgba(255,255,255,.85);
-      font-size:14px;
-      line-height:1.8;
-    }
-    .meta strong{ color:#fff; }
+footer{text-align:center;padding:35px;font-size:16px;background:rgba(106,0,255,.06);margin-top:40px}
+.socials a{margin:0 10px;color:#6a00ff;text-decoration:none;font-weight:600}
 
-    section{
-      margin-top:26px;
-    }
-    .section-title{
-      display:flex;
-      align-items:end;
-      justify-content:space-between;
-      gap:14px;
-      margin: 6px 4px 12px;
-    }
-    .section-title h2{
-      margin:0;
-      font-size:22px;
-    }
-    .section-title p{
-      margin:0;
-      color:rgba(255,255,255,.75);
-      font-size:14px;
-    }
-
-    .grid{
-      display:grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap:14px;
-    }
-    @media (max-width: 900px){
-      .grid{ grid-template-columns: 1fr; }
-    }
-
-    .card{
-      padding:16px;
-      border-radius:20px;
-      border:1px solid rgba(255,255,255,.16);
-      background: rgba(255,255,255,.06);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      position:relative;
-      overflow:hidden;
-      min-height: 150px;
-    }
-    .card::before{
-      content:"";
-      position:absolute;
-      inset:-2px;
-      background: radial-gradient(340px 160px at 80% 10%, rgba(167,139,250,.20), transparent 55%);
-      pointer-events:none;
-    }
-    .card h3{
-      margin:0 0 8px;
-      font-size:18px;
-    }
-    .card p{
-      margin:0;
-      color:rgba(255,255,255,.78);
-      line-height:1.9;
-      font-size:14px;
-    }
-    .tagrow{
-      margin-top:12px;
-      display:flex;
-      flex-wrap:wrap;
-      gap:8px;
-    }
-    .tag{
-      font-size:12px;
-      font-weight:700;
-      padding:7px 10px;
-      border-radius:999px;
-      border:1px solid rgba(255,255,255,.16);
-      background: rgba(255,255,255,.05);
-      color:rgba(255,255,255,.9);
-    }
-
-    .banner{
-      margin-top:14px;
-      padding:18px;
-      border-radius:22px;
-      border:1px solid rgba(255,255,255,.18);
-      background: linear-gradient(135deg, rgba(139,92,246,.25), rgba(255,255,255,.06));
-      box-shadow: 0 18px 60px rgba(0,0,0,.35);
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:14px;
-      flex-wrap:wrap;
-    }
-    .banner strong{
-      font-size:18px;
-    }
-    .banner .note{
-      color:rgba(255,255,255,.82);
-      font-size:14px;
-      line-height:1.9;
-      max-width:70ch;
-    }
-
-    .contact{
-      padding:18px;
-      display:grid;
-      gap:12px;
-    }
-    .contact .line{
-      display:flex;
-      gap:10px;
-      align-items:center;
-      justify-content:space-between;
-      flex-wrap:wrap;
-      padding:12px;
-      border-radius:16px;
-      border:1px solid rgba(255,255,255,.16);
-      background: rgba(255,255,255,.06);
-    }
-    .muted{ color: rgba(255,255,255,.75); font-size:14px; line-height:1.9; }
-    .mono{ font-variant-numeric: tabular-nums; letter-spacing:.3px; }
-
-    footer{
-      margin-top:26px;
-      text-align:center;
-      color:rgba(255,255,255,.65);
-      font-size:13px;
-      padding: 12px 0 4px;
-    }
-
-    /* reveal animation */
-    .reveal{
-      opacity:0;
-      transform: translateY(14px);
-      transition: opacity .7s ease, transform .7s ease;
-    }
-    .reveal.show{
-      opacity:1;
-      transform: translateY(0);
-    }
-
-    /* tiny icon */
-    .dot{
-      width:10px;height:10px;border-radius:50%;
-      background: rgba(167,139,250,.95);
-      box-shadow: 0 0 0 6px rgba(167,139,250,.10);
-      flex:0 0 auto;
-    }
-  </style>
+@media(max-width:600px){.nav{flex-direction:column}.hero h1{font-size:34px}}
+</style>
 </head>
 
 <body>
-  <div class="blob b1"></div>
-  <div class="blob b2"></div>
 
-  <header>
-    <nav class="nav">
-      <div class="brand">
-        <div class="logo" aria-hidden="true"></div>
-        <div>
-          <div style="font-size:15px;opacity:.95;">آرا گرافیک</div>
-          <div style="font-size:12px;opacity:.7;">طراحی کارت ویزیت • تراکت • ست اداری</div>
-        </div>
-      </div>
-      <div style="display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end;">
-        <a href="#portfolio">نمونه‌کارها</a>
-        <a href="#consult">مشاوره</a>
-        <a href="#benefits">مزیت‌ها</a>
-        <a class="cta" href="#order">ثبت سفارش</a>
-      </div>
-    </nav>
-  </header>
+<!-- منو -->
+<div class="nav">
+<h1>آرا گرافیک</h1>
+<div class="menu">
+<a href="#home">خانه</a>
+<a href="#works">نمونه کارها</a>
+<a href="#services">خدمات</a>
+<a href="#advantage">مزیت‌ها</a>
+<a href="#order">ثبت سفارش</a>
+</div>
+</div>
 
-  <main class="wrap">
-    <div class="hero">
-      <div class="glass hero-card reveal">
-        <h1>طراحی تمیز و حرفه‌ای برای برند شما</h1>
-        <p class="sub">
-          من از مجموعه <strong>آرا گرافیک</strong>، طراحی‌هایی با هویت بصری یکدست، چاپ‌پذیر و مناسب فضای دیجیتال آماده می‌کنم.
-          از کارت ویزیت و تراکت تا ست اداری و محتوای شبکه‌های اجتماعی.
-        </p>
+<div class="container">
 
-        <div class="badges">
-          <span class="badge">تک‌رنگ سفید/بنفش</span>
-          <span class="badge">سبک مدرن + شیشه‌ای (Glass)</span>
-          <span class="badge">تحویل فایل‌های چاپی</span>
-        </div>
+<!-- هدر -->
+<section id="home" class="glass hero">
+<div>
+<h1>آرا گرافیک</h1>
+<p>طراحی حرفه‌ای کارت ویزیت، لوگو، تراکت، ست اداری، لیبل و هویت بصری کسب‌وکار شما با خلاقیت و کیفیت بالا.</p>
+<a class="btn" href="#order">ثبت سفارش</a>
+</div>
+<img src="zinat.jpg" alt="آرا گرافیک">
+</section>
 
-        <div class="hero-actions">
-          <a class="btn primary" href="#order">ثبت سفارش با 09927131621</a>
-          <a class="btn ghost" href="#portfolio">دیدن نمونه‌کارها</a>
-          <button class="btn" id="copyNumber" type="button">کپی شماره سفارش</button>
-        </div>
+<!-- گالری نمونه کارها -->
+<section id="works" class="glass">
+<h2>نمونه کارها</h2>
 
-        <div style="margin-top:14px" class="muted">
-          <div class="line" style="display:flex;gap:10px;align-items:center;justify-content:flex-start;flex-wrap:wrap;padding:0;border:none;background:transparent;">
-            <span class="dot" aria-hidden="true"></span>
-            <span>اینستاگرام: <strong class="mono">@ara_graphic1</strong></span>
-            <span style="opacity:.7;">|</span>
-            <span>تلگرام: <strong>کانال و پیج</strong></span>
-            <span style="opacity:.7;">|</span>
-            <span>بله و ایتا: <strong>پاسخ‌گویی</strong></span>
-          </div>
-        </div>
-      </div>
+<div class="filters">
+<button class="active" onclick="filter('all',this)">همه</button>
+<button onclick="filter('card',this)">کارت ویزیت</button>
+<button onclick="filter('logo',this)">لوگو</button>
+<button onclick="filter('flyer',this)">تراکت</button>
+<button onclick="filter('office',this)">ست اداری</button>
+<button onclick="filter('label',this)">لیبل</button>
+</div>
 
-      <aside class="glass profile reveal">
-        <div class="pic">
-          <!-- عکس شما باید کنار index.html باشد -->
-          <img src="zinat.jpg" alt="عکس طراح - آرا گرافیک" />
-        </div>
-        <div class="meta">
-          <div><strong>آرا گرافیک</strong> — طراحی گرافیک</div>
-          <div>تمرکز: کارت ویزیت، تراکت، ست اداری، هویت بصری</div>
-          <div class="muted">برای سفارش و مشاوره: <span class="mono"><strong>09927131621</strong></span></div>
-        </div>
-      </aside>
-    </div>
+<div class="gallery">
+<div class="work" data-cat="card"><img src="images/card/1.jpg" onclick="open(this)"><h3>کارت ویزیت</h3></div>
+<div class="work" data-cat="card"><img src="images/card/2.jpg" onclick="open(this)"><h3>کارت ویزیت</h3></div>
+<div class="work" data-cat="logo"><img src="images/logo/1.jpg" onclick="open(this)"><h3>لوگو</h3></div>
+<div class="work" data-cat="logo"><img src="images/logo/2.jpg" onclick="open(this)"><h3>لوگو</h3></div>
+<div class="work" data-cat="flyer"><img src="images/flyer/1.jpg" onclick="open(this)"><h3>تراکت</h3></div>
+<div class="work" data-cat="flyer"><img src="images/flyer/2.jpg" onclick="open(this)"><h3>تراکت</h3></div>
+<div class="work" data-cat="office"><img src="images/office/1.jpg" onclick="open(this)"><h3>ست اداری</h3></div>
+<div class="work" data-cat="office"><img src="images/office/2.jpg" onclick="open(this)"><h3>ست اداری</h3></div>
+<div class="work" data-cat="label"><img src="images/label/1.jpg" onclick="open(this)"><h3>لیبل</h3></div>
+<div class="work" data-cat="label"><img src="images/label/2.jpg" onclick="open(this)"><h3>لیبل</h3></div>
+</div>
+</section>
 
-    <section id="portfolio">
-      <div class="section-title">
-        <h2 class="reveal">نمونه‌کارها</h2>
-        <p class="reveal">چند مورد از خدماتی که انجام می‌دهم</p>
-      </div>
+<!-- خدمات -->
+<section id="services" class="glass">
+<h2>خدمات ما</h2>
+<div class="cards">
+<div class="card"><h3>کارت ویزیت</h3><p>طراحی مدرن و خاص</p></div>
+<div class="card"><h3>لوگو</h3><p>هویت بصری برند</p></div>
+<div class="card"><h3>تراکت</h3><p>تبلیغات خلاقانه</p></div>
+<div class="card"><h3>ست اداری</h3><p>سربرگ، پاکت، فولدر</p></div>
+<div class="card"><h3>لیبل</h3><p>برچسب محصولات</p></div>
+</div>
+</section>
 
-      <div class="grid">
-        <article class="card reveal">
-          <h3>کارت ویزیت (Business Card)</h3>
-          <p>طراحی مینیمال، خوانا و متناسب با شخصیت برند. خروجی مناسب چاپ (CMYK) و نسخه مخصوص شبکه‌های اجتماعی.</p>
-          <div class="tagrow">
-            <span class="tag">چاپ‌پذیر</span>
-            <span class="tag">QR / شبکه اجتماعی</span>
-            <span class="tag">چیدمان حرفه‌ای</span>
-          </div>
-        </article>
+<!-- مشاوره -->
+<section class="glass">
+<h2>مشاوره طراحی</h2>
+<p style="line-height:2;text-align:center;font-size:18px">قبل از شروع پروژه، مشاوره رایگان برای انتخاب بهترین سبک طراحی و رنگ‌بندی متناسب با کسب‌وکار شما ارائه می‌شود.</p>
+</section>
 
-        <article class="card reveal">
-          <h3>تراکت (Flyer)</h3>
-          <p>طراحی تراکت تبلیغاتی با تاکید روی تیتر، پیشنهاد ویژه و ساختار بصری درست برای جذب سریع مخاطب.</p>
-          <div class="tagrow">
-            <span class="tag">فروش‌محور</span>
-            <span class="tag">تیتر قوی</span>
-            <span class="tag">نسخه A5/A4</span>
-          </div>
-        </article>
+<!-- مزیت ها -->
+<section id="advantage" class="glass">
+<h2>مزیت‌های همکاری با آرا گرافیک</h2>
+<ul>
+<li>طراحی اختصاصی و خلاقانه</li>
+<li>تحویل سریع سفارشات</li>
+<li>ویرایش طبق نظر مشتری</li>
+<li>کیفیت مناسب چاپ</li>
+<li>پشتیبانی تا پایان پروژه</li>
+</ul>
+</section>
 
-        <article class="card reveal">
-          <h3>ست اداری (Stationery Set)</h3>
-          <p>سربرگ، پاکت، کارت پرسنلی/ویزیت، امضا ایمیل و اقلام یکپارچه برای اعتبار برند.</p>
-          <div class="tagrow">
-            <span class="tag">یکدستی هویت</span>
-            <span class="tag">فایل لایه‌باز</span>
-            <span class="tag">استاندارد چاپ</span>
-          </div>
-        </article>
-      </div>
+<!-- تخفیف -->
+<section class="glass" style="text-align:center">
+<h2>🎉 تخفیف ویژه</h2>
+<p style="font-size:18px;line-height:2">برای سفارش طراحی، تخفیف ویژه در نظر گرفته شده است! همین حالا تماس بگیرید.</p>
+<a class="btn" href="tel:09927131621">📞 09927131621</a>
+</section>
 
-      <div class="banner reveal">
-        <div>
-          <strong>طراحی با تخفیف ویژه</strong>
-          <div class="note">برای سفارش‌های چندتایی (مثلاً کارت ویزیت + تراکت + ست اداری) تخفیف همکاری در نظر می‌گیرم.</div>
-        </div>
-        <a class="btn primary" href="#order">دریافت تخفیف و ثبت سفارش</a>
-      </div>
-    </section>
+<!-- ثبت سفارش -->
+<section id="order" class="glass" style="text-align:center">
+<h2>ثبت سفارش</h2>
+<p style="font-size:18px;line-height:2">📞 شماره تماس: <b>09927131621</b></p>
+<p style="line-height:2">ثبت سفارش از طریق تلگرام | بله | ایتا</p>
+<p style="line-height:2">اینستاگرام: <b>ara_graphic1</b></p>
+<a class="btn" href="https://instagram.com/ara_graphic1" target="_blank">صفحه اینستاگرام</a>
+</section>
 
-    <section id="consult">
-      <div class="section-title">
-        <h2 class="reveal">مشاوره طراحی</h2>
-        <p class="reveal">قبل از شروع، مسیر را شفاف می‌کنیم</p>
-      </div>
+</div>
 
-      <div class="grid">
-        <article class="card reveal">
-          <h3>انتخاب سبک و رنگ</h3>
-          <p>بر اساس حوزه کاری و مخاطب هدف، سبک بصری و چیدمان مناسب پیشنهاد می‌دهم تا طرح شما حرفه‌ای و قابل اعتماد دیده شود.</p>
-        </article>
-        <article class="card reveal">
-          <h3>آماده‌سازی برای چاپ</h3>
-          <p>تنظیمات فایل (رزولوشن، حاشیه امن، برش، رنگ) برای جلوگیری از افت کیفیت یا خطای چاپ.</p>
-        </article>
-        <article class="card reveal">
-          <h3>بازبینی و اصلاح</h3>
-          <p>روی جزئیات مثل فاصله‌ها، تایپوگرافی و اولویت اطلاعات حساس هستم تا خروجی نهایی تمیز و دقیق باشد.</p>
-        </article>
-      </div>
-    </section>
+<!-- لایت باکس -->
+<div class="lightbox" id="lb">
+<span onclick="closeLb()">&times;</span>
+<img id="lbImg" src="">
+</div>
 
-    <section id="benefits">
-      <div class="section-title">
-        <h2 class="reveal">مزیت‌های همکاری با من</h2>
-        <p class="reveal">چرا آرا گرافیک؟</p>
-      </div>
+<!-- دکمه های شناور -->
+<div class="float-btns">
+<a href="tel:09927131621" title="تماس">📞</a>
+<a href="https://t.me/" target="_blank" title="تلگرام">✈️</a>
+<a href="https://instagram.com/ara_graphic1" target="_blank" title="اینستاگرام">📷</a>
+</div>
 
-      <div class="grid">
-        <article class="card reveal">
-          <h3>طرح‌های مینیمال و چشم‌گیر</h3>
-          <p>طراحی با تمرکز روی سادگی، خوانایی و تاثیرگذاری—بدون شلوغی‌های بی‌دلیل.</p>
-        </article>
-        <article class="card reveal">
-          <h3>تحویل منظم و قابل استفاده</h3>
-          <p>فایل‌های مناسب چاپ و استفاده دیجیتال، مرتب و آماده تحویل (در صورت نیاز لایه‌باز).</p>
-        </article>
-        <article class="card reveal">
-          <h3>پشتیبانی در پیام‌رسان‌ها</h3>
-          <p>ثبت سفارش و پیگیری از طریق تلگرام، بله و ایتا—سریع و در دسترس.</p>
-        </article>
-      </div>
-    </section>
+<!-- فوتر -->
+<footer>
+<p>© تمامی حقوق برای آرا گرافیک محفوظ است.</p>
+<div class="socials" style="margin-top:12px">
+<a href="https://instagram.com/ara_graphic1" target="_blank">اینستاگرام</a>
+<a href="https://t.me/" target="_blank">تلگرام</a>
+<a href="#">بله</a>
+<a href="#">ایتا</a>
+</div>
+</footer>
 
-    <section id="order">
-      <div class="section-title">
-        <h2 class="reveal">ثبت سفارش</h2>
-        <p class="reveal">راه‌های ارتباطی و ارسال جزئیات</p>
-      </div>
+<script>
+// فیلتر گالری
+function filter(cat,btn){
+document.querySelectorAll('.filters button').forEach(b=>b.classList.remove('active'));
+btn.classList.add('active');
+document.querySelectorAll('.work').forEach(w=>{
+if(cat=='all'||w.dataset.cat==cat){w.style.display='block';}
+else{w.style.display='none';}
+});
+}
+// لایت باکس
+function open(img){
+document.getElementById('lbImg').src=img.src;
+document.getElementById('lb').style.display='flex';
+}
+function closeLb(){document.getElementById('lb').style.display='none';}
+</script>
 
-      <div class="glass contact reveal">
-        <div class="line">
-          <div>
-            <div style="font-weight:800">شماره ثبت سفارش</div>
-            <div class="muted">تماس/پیام: <span class="mono"><strong>09927131621</strong></span></div>
-          </div>
-          <div style="display:flex;gap:10px;flex-wrap:wrap;">
-            <a class="btn primary" href="tel:09927131621">تماس</a>
-            <a class="btn" href="sms:09927131621">پیامک</a>
-            <button class="btn" id="copyNumber2" type="button">کپی شماره</button>
-          </div>
-        </div>
-
-        <div class="line">
-          <div>
-            <div style="font-weight:800">شبکه‌های اجتماعی</div>
-            <div class="muted">
-              اینستاگرام: <span class="mono"><strong>@ara_graphic1</strong></span>
-              <span style="opacity:.7;"> | </span>
-              تلگرام: <strong>کانال و پیج</strong>
-              <span style="opacity:.7;"> | </span>
-              بله / ایتا: <strong>پاسخ‌گو</strong>
-            </div>
-          </div>
-          <div style="display:flex;gap:10px;flex-wrap:wrap;">
-            <a class="btn" href="https://instagram.com/ara_graphic1" target="_blank" rel="noopener">اینستاگرام</a>
-
-            <!-- اگر آیدی/لینک دقیق تلگرام/بله/ایتا را دارید این‌ها را جایگزین کنید -->
-            <a class="btn" href="#" title="لینک دقیق تلگرام را جایگزین کنید">تلگرام</a>
-            <a class="btn" href="#" title="لینک دقیق بله را جایگزین کنید">بله</a>
-            <a class="btn" href="#" title="لینک دقیق ایتا را جایگزین کنید">ایتا</a>
-          </div>
-        </div>
-
-        <div class="muted">
-          <strong>برای شروع سریع:</strong>
-          لطفاً نوع سفارش (کارت ویزیت/تراکت/ست اداری)، نام برند، رنگ‌های مدنظر، متن‌ها، لوگو (اگر دارید) و نمونه سبک دلخواه را ارسال کنید.
-        </div>
-      </div>
-    </section>
-
-    <footer>
-      © <span id="year"></span> آرا گرافیک — طراحی با تم سفید/بنفش + استایل شیشه‌ای
-    </footer>
-  </main>
-
-  <script>
-    // year
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    // copy number
-    const number = "09927131621";
-    async function copyNum(){
-      try{
-        await navigator.clipboard.writeText(number);
-        alert("شماره کپی شد: " + number);
-      }catch(e){
-        // fallback
-        const t = document.createElement('textarea');
-        t.value = number;
-        document.body.appendChild(t);
-        t.select();
-        document.execCommand('copy');
-        document.body.removeChild(t);
-        alert("شماره کپی شد: " + number);
-      }
-    }
-    document.getElementById('copyNumber').addEventListener('click', copyNum);
-    document.getElementById('copyNumber2').addEventListener('click', copyNum);
-
-    // reveal on scroll
-    const els = document.querySelectorAll('.reveal');
-    const io = new IntersectionObserver((entries)=>{
-      entries.forEach(ent=>{
-        if(ent.isIntersecting){
-          ent.target.classList.add('show');
-          io.unobserve(ent.target);
-        }
-      });
-    }, { threshold: 0.12 });
-
-    els.forEach(el=>io.observe(el));
-  </script>
 </body>
 </html>
